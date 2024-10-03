@@ -1,0 +1,28 @@
+function() {
+    // Pobierz aktualną wartość licznika odsłon z Local Storage lub ustaw 0, jeśli nie istnieje
+    var pageViewCount = localStorage.getItem('pageViewCount') || 0;
+    
+    // Konwertuj wartość na liczbę, ponieważ Local Storage przechowuje dane jako tekst
+    pageViewCount = parseInt(pageViewCount);
+    
+    // Pobierz poprzedni URL z Local Storage
+    var lastPageURL = localStorage.getItem('lastPageURL') || '';
+    
+    // Bieżący adres URL
+    var currentPageURL = window.location.href;
+    
+    // Sprawdź, czy bieżący URL jest inny niż poprzedni
+    if (currentPageURL !== lastPageURL) {
+        // Zwiększ licznik o 1
+        pageViewCount++;
+        
+        // Zapisz zaktualizowaną wartość licznika do Local Storage
+        localStorage.setItem('pageViewCount', pageViewCount);
+        
+        // Zaktualizuj ostatni odwiedzony URL w Local Storage
+        localStorage.setItem('lastPageURL', currentPageURL);
+    }
+    
+    // Zwróć aktualną wartość licznika
+    return pageViewCount;
+}
