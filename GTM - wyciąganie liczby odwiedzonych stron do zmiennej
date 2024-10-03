@@ -26,3 +26,4 @@ function() {
     // Zwróć aktualną wartość licznika
     return pageViewCount;
 }
+dgdfgdf
